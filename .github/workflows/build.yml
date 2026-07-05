@@ -5,7 +5,7 @@ on:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  workflow_dispatch: # Manuel tetikleme butonu ekler
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -30,6 +30,7 @@ jobs:
         pyinstaller --onefile --console --name="FishingSystem" --clean main.py
 
     - name: Cikti Klasorunu Hazirla (Templates ile Birlikte)
+      shell: cmd  # PowerShell yerine klasik CMD kullanarak hatayı çözüyoruz
       run: |
         mkdir build_output
         xcopy dist\FishingSystem.exe build_output\ /Y
